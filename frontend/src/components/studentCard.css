@@ -1,0 +1,70 @@
+.student-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.student-details {
+  flex: 1;
+}
+
+.student-details h3 {
+  margin: 0 0 0.5rem;
+  color: #1f2937;
+}
+
+.student-details p {
+  margin: 0.35rem 0;
+  color: #4b5563;
+}
+
+.student-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.student-actions button {
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #06080c;
+}
+
+.edit-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.delete-btn {
+  background-color: #dc2626;
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .student-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .student-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
