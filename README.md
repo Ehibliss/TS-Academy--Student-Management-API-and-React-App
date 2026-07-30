@@ -12,9 +12,6 @@ This is my solution to the **TS Academy Student Management** assignment. The pro
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-  - [AI Collaboration](#ai-collaboration)
 
 - [Getting Started](#getting-started)
 - [API Endpoints](#api-endpoints)
@@ -40,6 +37,8 @@ Build a full-stack Student Management application that allows users to:
 ### Links
 
 - **Repository:** https://github.com/Ehibliss/TS-Academy--Student-Management-API-and-React-App
+- **Frontend Live Site:** _Add your Netlify deployment here._
+- **Backend:** Local development (Node.js & Express)
 
 ---
 
@@ -109,8 +108,6 @@ As I continue building full-stack applications, I want to focus on:
 - Deploying both frontend and backend applications.
 - Writing cleaner, reusable, and maintainable code.
 
----
-
 ### Clone the repository
 
 ```bash
@@ -147,16 +144,21 @@ The frontend runs on:
 http://localhost:5173
 ```
 
+---
+
 ## API Endpoints
 
-| POST | `/createstudents` | Get all students |
-| GET | `/getallstudents/:id` | Get a student by ID |
-| GET | `/getstudentbyId` | Create a new student |
-| PUT | `/updatestudentbyId/:id` | Update a student |
-| DELETE | `/deletestudentbyId/:id` | Delete a student |
+| GET | `/getallstudents` | Get all students |
+| GET | `/getstudentbyId/:id` | Get a student by ID |
+| POST | `/createstudents` | Create a new student |
+| PUT | `/updatestudents/:id` | Update a student |
+| DELETE | `/students/:id` | Delete a student |
+
+---
 
 ## Author
 
+- **Name:** Blessing Ehi Ocheme
 - **Portfolio:** https://blessingehi.netlify.app/
 - **GitHub:** https://github.com/Ehibliss
 - **LinkedIn:** https://www.linkedin.com/in/blessing-ehi/
