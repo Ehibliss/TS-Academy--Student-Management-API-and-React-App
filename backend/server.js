@@ -42,43 +42,48 @@ app.get("/getstudentbyId/:id", (req, res) => {
       error: "Student not found",
     });
   }
-
-  app.put("/updatestudent/:id", (req, res) => {
-    const id = parseInt(req.params.id);
-
-    const student = students.find((s) => s.id === id);
-
-    if (!student) {
-      return res.status(404).json({
-        error: "Student not found",
-      });
-    }
-
-    const { name, age, course } = req.body;
-
-    if (name) student.name = name;
-    if (age) student.age = age;
-    if (course) student.course = course;
-
-    res.status(200).json({
-      message: "Student details has updated successfully",
-    });
-  });
   res.status(200).json(student);
 });
 
+app.put("/updatestudent/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const student = students.find((s) => s.id === id);
+
+  if (!student) {
+    return res.status(404).json({
+      error: "Student not found",
+    });
+  }
+
+  const { name, age, course } = req.body;
+
+  if (name) student.name = name;
+  if (age) student.age = age;
+  if (course) student.course = course;
+
+  res.status(200).json({
+    message: "Student details updated successfully",
+    student,
+  });
+});
+
 app.delete("/deletestudentbyId/:id", (req, res) => {
-  const studeId = parseInt(req.params.id);
-  const studentIndex = students.findIndex((s) => s.id === studeId);
+  const studentId = parseInt(req.params.id);
+
+  const studentIndex = students.findIndex((s) => s.id === studentId);
+
   if (studentIndex === -1) {
     return res.status(404).json({
       error: "Student not found",
     });
-    students.splice(studentIndex, 1);
-    res.json({
-      message: "Student deleted successfully",
-    });
   }
+
+  students.splice(studentIndex, 1);
+
+  res.json({
+    message: "Student deleted successfully",
+  });
 });
 
 app.listen(PORT, () => {
