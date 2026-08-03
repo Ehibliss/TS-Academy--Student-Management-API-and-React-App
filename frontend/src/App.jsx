@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import API from "./api";
+import app from "./api";
 import StudentForm from "./components/StudentForm";
 import StudentList from "./components/StudentList";
 import StudentCard from "./components/StudentCard";
@@ -11,7 +11,7 @@ function App() {
   // Fetch all students
   async function fetchStudents() {
     try {
-      const response = await API.get("/students");
+      const response = await app.get("/getallstudents");
       setStudents(response.data);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -22,14 +22,27 @@ function App() {
     fetchStudents();
   }, []);
 
+  // Get Student by ID
+  async function handleGetStudentById(id) {
+    try {
+      const response = await app.get(`/getstudentbyId/${id}`);
+      console.log(response.data);
+
+      // Optional: load the student into the form for editing
+      setEditingStudent(response.data);
+    } catch (error) {
+      console.error("Error fetching student:", error);
+    }
+  }
+
   // Add or Update Student
   async function handleSubmit(formData) {
     try {
       if (editingStudent) {
-        await API.put(`/students/${editingStudent.id}`, formData);
+        await app.put(`/updatestudent/:id/${editingStudent.id}`, formData);
         setEditingStudent(null);
       } else {
-        await API.post("/students", formData);
+        await API.post("/createstudents", formData);
       }
 
       fetchStudents();
@@ -46,7 +59,7 @@ function App() {
   // Delete Student
   async function handleDelete(id) {
     try {
-      await API.delete(`/students/${id}`);
+      await app.delete(`/deletestudentbyId/:id/${id}`);
       fetchStudents();
     } catch (error) {
       console.error("Error deleting student:", error);

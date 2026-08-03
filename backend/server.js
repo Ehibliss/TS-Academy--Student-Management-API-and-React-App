@@ -32,7 +32,7 @@ app.get("/getallstudents", (req, res) => {
   res.json(students);
 });
 
-app.get("/getstudentbyId/:id", (req, res) => {
+app.get("/getstudentbyId:id", (req, res) => {
   const id = parseInt(req.params.id);
 
   const student = students.find((s) => s.id === id);
