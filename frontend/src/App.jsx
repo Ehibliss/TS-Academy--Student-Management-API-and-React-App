@@ -28,21 +28,20 @@ function App() {
       const response = await app.get(`/getstudentbyId/${id}`);
       console.log(response.data);
 
-      // Optional: load the student into the form for editing
       setEditingStudent(response.data);
     } catch (error) {
       console.error("Error fetching student:", error);
     }
   }
 
-  // Add or Update Student
+  //  Update Student
   async function handleSubmit(formData) {
     try {
       if (editingStudent) {
-        await app.put(`/updatestudent/:id/${editingStudent.id}`, formData);
+        await app.put(`/updatestudent/${editingStudent.id}`, formData);
         setEditingStudent(null);
       } else {
-        await API.post("/createstudents", formData);
+        await app.post("/createstudents", formData);
       }
 
       fetchStudents();
@@ -59,7 +58,7 @@ function App() {
   // Delete Student
   async function handleDelete(id) {
     try {
-      await app.delete(`/deletestudentbyId/:id/${id}`);
+      await app.delete(`/deletestudentbyId/${id}`);
       fetchStudents();
     } catch (error) {
       console.error("Error deleting student:", error);
